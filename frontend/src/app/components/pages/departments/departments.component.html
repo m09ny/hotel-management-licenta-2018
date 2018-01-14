@@ -1,0 +1,10 @@
+
+<p-dataTable #dt [value]="departments" [(selection)]="selectedDepartment" dataKey="id" [responsive]="true" [editable]="true">
+  
+    <p-column selectionMode="multiple"></p-column>
+    <p-column field="id" header="Department id" [sortable]="true"></p-column>
+    <p-column field="name" header="Department name" [sortable]="true" [editable]="true"></p-column>
+
+  </p-dataTable>
+  
+  <p-contextMenu [model]="items">  </p-contextMenu>

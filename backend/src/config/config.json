@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "tdchaatb",
+    "password": "UyocdLyT4BkiGo1y40oMeZMwuaNap6ry",
+    "database": "tdchaatb",
+    "host": "horton.elephantsql.com",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "tdchaatb",
+    "password": "UyocdLyT4BkiGo1y40oMeZMwuaNap6ry",
+    "database": "tdchaatb",
+    "host": "horton.elephantsql.com",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

@@ -1,0 +1,14 @@
+<p-dataTable [value]="clients" selectionMode="single" [(selection)]="selectedClient" [contextMenu]="cm" [responsive]="true">
+  
+    <p-column field="id" header="Client id" [sortable]="true"></p-column>
+    <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
+    <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+    <p-column field="cnp" header="CNP" [sortable]="true"></p-column>
+    <p-column field="address" header="Address" [sortable]="true"></p-column>
+    <p-column field="phone" header="Phone" [sortable]="true"></p-column>
+    <p-column field="email" header="Email" [sortable]="true"></p-column>
+
+  </p-dataTable>
+  
+  <p-contextMenu #cm [model]="items"></p-contextMenu>
+ 

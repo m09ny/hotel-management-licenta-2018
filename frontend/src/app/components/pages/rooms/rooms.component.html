@@ -1,0 +1,12 @@
+<button pButton type="button" (click)="toggle()" style="margin-bottom:10px" label="Toggle" icon="fa-list"></button>
+
+<p-dataTable [value]="rooms" [rows]="10" [paginator]="true" [pageLinks]="3" [responsive]="true" [stacked]="stacked">
+  <p-header>Rooms</p-header>
+  <p-column field="id" header="Room id"></p-column>
+  <p-column field="roomType" header="Roomtype"></p-column>
+  <p-column field="nrAdults" header="No of Adults"></p-column>
+  <p-column field="nrChildrens" header="No of Childrens"></p-column>
+  <p-column field="priceNight" header="Price/night"></p-column>
+</p-dataTable>
+
+<p-contextMenu [model]="items">  </p-contextMenu> 

@@ -1,0 +1,11 @@
+<p-dataTable [value]="bills" selectionMode="single" [(selection)]="selectedBill" [contextMenu]="cm" [responsive]="true">
+  
+    <p-column field="id" header="Bill id" [sortable]="true"></p-column>
+    <p-column field="id_employee" header="Employee ID" [sortable]="true"></p-column>
+    <p-column field="id_client" header="Client ID" [sortable]="true"></p-column>
+    <p-column field="date" header="Bill Date" [sortable]="true"></p-column>
+    <p-column field="amout" header="Amount" [sortable]="true"></p-column>
+
+  </p-dataTable>
+  
+  <p-contextMenu #cm [model]="items"></p-contextMenu>

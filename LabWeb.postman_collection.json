@@ -1,0 +1,311 @@
+{
+	"variables": [],
+	"info": {
+		"name": "LabWeb",
+		"_postman_id": "4ad4b95f-4045-c2ee-cee3-74305139b7c4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add user",
+			"request": {
+				"url": "http://localhost:3000/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"Monica\",\n\t\"lastName\":\"Valcu\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add employees",
+			"request": {
+				"url": "http://localhost:3000/employees",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_department\":\"1\",\n\t\"firstName\":\"Monica\",\n\t\"lastName\":\"Valcu\",\n    \"cnp\": \"2786978697796\",\n    \"address\": \"Caragiale 5\",\n    \"phone\": \"0768596879\",\n    \"employment_date\": \"2017-05-06\",\n    \"role\": \"administrator\",\n    \"salary\": \"124222\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add departments",
+			"request": {
+				"url": "http://localhost:3000/departments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"administrativ\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add bills",
+			"request": {
+				"url": "http://localhost:3000/bills",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_employee\": \"1\",\n    \"id_client\": \"1\",\n    \"date\": \"2017-05-04\",\n    \"amout\": \"123.00\" \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show user list",
+			"request": {
+				"url": "http://localhost:3000/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"gygj\",\n\t\"lastName\":\"hhgh\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show employees list",
+			"request": {
+				"url": "http://localhost:3000/employees",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"gygj\",\n\t\"lastName\":\"hhgh\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show departments list",
+			"request": {
+				"url": "http://localhost:3000/departments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"gygj\",\n\t\"lastName\":\"hhgh\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show bills list",
+			"request": {
+				"url": "http://localhost:3000/bills",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"gygj\",\n\t\"lastName\":\"hhgh\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update department",
+			"request": {
+				"url": "http://localhost:3000/departments/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"administrativ\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update employee",
+			"request": {
+				"url": "http://localhost:3000/employees/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_department\" : \"2\",\n\t\"firstName\" : \"test\",\n\t\"lastName\" : \"test\",\n\t\"cnp\" : \"22313\",\n\t\"address\" : \"212e123\",\n\t\"phone\" : \"21313\",\n\t\"employment_date\" : \"2017-05-05\",\n\t\"role\" : \"test\",\n\t\"salary\" : \"223232\"\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update bill",
+			"request": {
+				"url": "http://localhost:3000/bills/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_employee\": \"2\",\n    \"id_client\": \"2\",\n    \"date\": \"2016-05-04\",\n    \"amout\": \"222.00\" \n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"url": "http://localhost:3000/user/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete employee",
+			"request": {
+				"url": "http://localhost:3000/employees/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete department",
+			"request": {
+				"url": "http://localhost:3000/departments/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete bill",
+			"request": {
+				"url": "http://localhost:3000/bills/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

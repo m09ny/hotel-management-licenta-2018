@@ -1,0 +1,25 @@
+
+<p-dataTable #dt [value]="employees" selectionMode="single" [(selection)]="selectedEmployee" [contextMenu]="cm" [responsive]="true" [scrollable]="true" scrollHeight="400px">
+  
+  <p-column field="id" header="Employee id" [sortable]="true"></p-column>
+  <p-column field="id_department" header="Department id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+  <p-column field="firstName" header="First Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+  <p-column field="lastName" header="Last Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+  <p-column field="cnp" header="CNP" [sortable]="true"></p-column>
+  <p-column field="address" header="Address (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+  <p-column field="phone" header="Phone" [sortable]="true"></p-column>
+  <p-column field="employment_date" header="Employment date (contains)" [filter]="true" filterMatchMode="contains"  [sortable]="true"></p-column>
+  <p-column field="role" header="Role" [sortable]="true"></p-column>
+  <p-column field="salary" header="Salary" [sortable]="true"></p-column>
+  <ng-template pTemplate="emptymessage">
+     Nooooo Data
+  </ng-template>
+
+</p-dataTable>
+
+<p-contextMenu #cm [model]="items"></p-contextMenu>
+
+
+<p>
+<button type="button" pButton icon="fa-file-o" iconPos="left" label="Export data in CSV file" (click)="dt.exportCSV()"></button>
+</p>

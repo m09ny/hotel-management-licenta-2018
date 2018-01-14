@@ -1,0 +1,22 @@
+<p-dataTable [value]="accomodations" selectionMode="single" [(selection)]="selectedAccomodation" [contextMenu]="cm" [responsive]="true" [scrollable]="true" scrollHeight="400px">
+  
+  <p-column field="id" header="Accomodation id" [sortable]="true"></p-column>
+  <p-column field="id_employee" header="Employee id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+  <p-column field="id_bill" header="Bill id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+  <p-column field="id_room" header="Room id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+  <p-column field="arrivelDate" header="Arrival date" [sortable]="true"></p-column>
+  <p-column field="nrNights" header="No of Nights" [sortable]="true"></p-column>
+  <p-column field="nrAdults" header="No of Adults" [sortable]="true"></p-column>
+  <p-column field="nrChildrens" header="No of Childrens" [sortable]="true"></p-column>
+  <ng-template pTemplate="emptymessage">
+     Nooooo Data
+  </ng-template>
+
+</p-dataTable>
+
+<p-contextMenu #cm [model]="items"></p-contextMenu>
+
+
+<p>
+<button type="button" pButton icon="fa-file-o" iconPos="left" label="Export data in CSV file" (click)="dt.exportCSV()"></button>
+</p>
