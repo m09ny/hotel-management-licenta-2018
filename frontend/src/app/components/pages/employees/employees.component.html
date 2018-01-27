@@ -1,6 +1,5 @@
-
-<p-dataTable #dt [value]="employees" selectionMode="single" [(selection)]="selectedEmployee" [contextMenu]="cm" [responsive]="true" [scrollable]="true" scrollHeight="400px">
-  
+<p-dataTable [value]="employees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+  <p-header>CRUD for Employees</p-header>
   <p-column field="id" header="Employee id" [sortable]="true"></p-column>
   <p-column field="id_department" header="Department id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
   <p-column field="firstName" header="First Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
@@ -14,12 +13,93 @@
   <ng-template pTemplate="emptymessage">
      Nooooo Data
   </ng-template>
-
+  <p-footer>
+    <div class="ui-helper-clearfix" style="width:100%">
+      <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add">
+      </button>
+    </div>
+  </p-footer>
 </p-dataTable>
 
-<p-contextMenu #cm [model]="items"></p-contextMenu>
-
-
-<p>
-<button type="button" pButton icon="fa-file-o" iconPos="left" label="Export data in CSV file" (click)="dt.exportCSV()"></button>
-</p>
+<p-dialog header="Employee Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="400">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedEmployee">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="idDepartment">Department</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="idDepartment" [(ngModel)]="selectedEmployee.id_department" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="fName">First Name</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="fName" [(ngModel)]="selectedEmployee.firstName" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="lName">Last Name</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="lName" [(ngModel)]="selectedEmployee.lastName" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="cnp">CNP</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="cnp" [(ngModel)]="selectedEmployee.cnp" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="address">Address</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="address" [(ngModel)]="selectedEmployee.address" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="phone">Phone</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="phone" [(ngModel)]="selectedEmployee.phone" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="eDate">Employment Date</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="eDate" [(ngModel)]="selectedEmployee.employment_date" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="role">Role</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="role" [(ngModel)]="selectedEmployee.role" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <label for="salary">Salary</label>
+      </div>
+      <div class="ui-grid-col-8">
+        <input pInputText id="salary" [(ngModel)]="selectedEmployee.salary" />
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa-close" (click)="deleteEmployee()" label="Delete"></button>
+      <button type="button" pButton icon="fa-check" (click)="updateEmployee()" label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>

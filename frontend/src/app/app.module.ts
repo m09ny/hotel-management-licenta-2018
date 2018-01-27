@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // UI
 import { SuiModule } from 'ng2-semantic-ui';
 import { DataTableModule, SharedModule } from 'primeng/primeng';
+import { DialogModule } from 'primeng/primeng';
 
 // Services
 import { ApiService } from './service';
@@ -57,11 +58,11 @@ import { ClientsComponent } from './components/pages/clients/clients.component';
     DataTableModule,
     SharedModule,
     FormsModule,
-    DataTableModule,
     CalendarModule,
     ButtonModule,
     InputTextModule,
     ContextMenuModule,
+    DialogModule
   ],
   providers: [
     AppRoutingModule,

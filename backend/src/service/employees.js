@@ -9,7 +9,9 @@ exports.list = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  res.jsonp(employees.create(req.body));
+  employees.create(req.body)
+    .then(employee => res.jsonp(employee))
+    .catch((error) => res.status(400).send(error));
 };
 
 exports.findById = function (req, res) {
