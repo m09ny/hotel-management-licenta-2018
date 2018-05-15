@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/';
+import { Rooms } from '../../../models/';
 
 @Component({
   selector: 'app-rooms',
@@ -27,8 +28,8 @@ export class RoomsComponent implements OnInit {
   }
   viewRoom(select: Rooms) {
     console.log(JSON.stringify(select));
-
   }
+  
   showDialogToAdd() {
     this.selectedRoom = new Rooms();
     this.isNew = true;
@@ -83,20 +84,5 @@ export class RoomsComponent implements OnInit {
   
   toggle() {
     this.stacked = !this.stacked;
-}
-}
-interface IRooms {
-  id: number;
-  roomType: string;
-  nrAdults: number;
-  nrChildrens: number;
-  priceNight: number;
-}
-
-class Rooms implements IRooms {
-  id: number;
-  roomType: string;
-  nrAdults: number;
-  nrChildrens: number;
-  priceNight: number;
+  }
 }

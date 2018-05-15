@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../service/';
-
+import { ApiService } from '../../../service';
+import { Accomodations } from '../../../models';
 
 @Component({
   selector: 'app-accomodations',
@@ -10,14 +10,14 @@ import { ApiService } from '../../../service/';
 export class AccomodationsComponent implements OnInit {
 
   title = 'Accomodations';
-  
-    accomodations: Accomodations[];
-    selectedAccomodation: Accomodations;
-    isNew: boolean;
 
-    displayDialog: boolean;
+  accomodations: Accomodations[];
+  selectedAccomodation: Accomodations;
+  isNew: boolean;
 
-    constructor(private apiService: ApiService) { }
+  displayDialog: boolean;
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.displayDialog = false;
@@ -26,6 +26,7 @@ export class AccomodationsComponent implements OnInit {
       this.accomodations = res;
     });
   }
+
   viewAccomodation(select: Accomodations) {
     console.log(JSON.stringify(select));
   }
@@ -81,26 +82,4 @@ export class AccomodationsComponent implements OnInit {
     }
     return accomodation;
   }
-
-}
-interface IAccomodations {
-  id: number;
-  id_employee: number;
-  id_bill: number;
-  id_room: number;
-  arrivelDate: string;
-  nrNights: number;
-  nrAdults: number;
-  nrChildrens: number;
-}
-
-class Accomodations implements IAccomodations {
-  id: number;
-  id_employee: number;
-  id_bill: number;
-  id_room: number;
-  arrivelDate: string;
-  nrNights: number;
-  nrAdults: number;
-  nrChildrens: number;
 }

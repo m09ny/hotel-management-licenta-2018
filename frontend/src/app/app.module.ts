@@ -19,6 +19,7 @@ import { fakeBackendProvider } from './service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { ScheduleModule } from 'primeng/components/schedule/schedule';
 import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
@@ -33,6 +34,9 @@ import { BillsComponent } from './components/pages/bills/bills.component';
 import { AccomodationsComponent } from './components/pages/accomodations/accomodations.component';
 import { RoomsComponent } from './components/pages/rooms/rooms.component';
 import { ClientsComponent } from './components/pages/clients/clients.component';
+import { ReservationsComponent } from './components/pages/reservations/reservations.component';
+
+import { Accomodations, Rooms } from './models'
 
 @NgModule({
   declarations: [
@@ -44,7 +48,8 @@ import { ClientsComponent } from './components/pages/clients/clients.component';
     BillsComponent,
     AccomodationsComponent,
     RoomsComponent,
-    ClientsComponent
+    ClientsComponent,
+    ReservationsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -59,6 +64,7 @@ import { ClientsComponent } from './components/pages/clients/clients.component';
     SharedModule,
     FormsModule,
     CalendarModule,
+    ScheduleModule,
     ButtonModule,
     InputTextModule,
     ContextMenuModule,

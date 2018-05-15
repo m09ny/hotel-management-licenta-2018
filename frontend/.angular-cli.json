@@ -24,13 +24,17 @@
         "../src/assets/semantic/semantic.css",
         "../node_modules/primeng/resources/primeng.css",
         "../node_modules/primeng/resources/themes/flick/theme.css",
+        "../node_modules/fullcalendar/dist/fullcalendar.css",
+        "../node_modules/fullcalendar/dist/fullcalendar.print.css",
         "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/chart.js/dist/Chart.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/fullcalendar/node_modules/moment/moment.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

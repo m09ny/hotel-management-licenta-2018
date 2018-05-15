@@ -6,3 +6,4 @@ export * from './pages/bills/bills.component';
 export * from './pages/accomodations/accomodations.component';
 export * from './pages/rooms/rooms.component';
 export * from './pages/clients/clients.component';
+export * from './pages/reservations/reservations.component';
