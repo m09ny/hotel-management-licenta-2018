@@ -1,4 +1,4 @@
-# labtemplate
+# hotel-management-licenta-2018
 
 # Setup
 
