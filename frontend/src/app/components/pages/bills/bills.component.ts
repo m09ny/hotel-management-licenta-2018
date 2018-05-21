@@ -58,7 +58,7 @@ export class BillsComponent implements OnInit {
     if (this.isNew)
       this.apiService.post('bills/', this.selectedBill).subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('bills/', this.selectedBill).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('bills/' + this.selectedBill.id, this.selectedBill).subscribe(res => this.addOrUpdate(res));
   }
   deleteBill(select: Bills) {
     this.apiService.delete('bills/' + this.selectedBill.id).subscribe(res => {

@@ -1,1 +1,7 @@
+<p>
+<p-dropdown [options]="rooms" [(ngModel)]="selectedRoom" (onChange)="changeRoom($event)"></p-dropdown>
+</p>
+
+<p>
 <p-schedule [events]="reservations" [header]="header" [defaultDate]="today" [editable]="true"></p-schedule>
+</p>

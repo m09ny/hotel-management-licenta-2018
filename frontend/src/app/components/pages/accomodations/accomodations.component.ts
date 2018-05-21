@@ -59,7 +59,7 @@ export class AccomodationsComponent implements OnInit {
     if (this.isNew)
       this.apiService.post('accomodations/', this.selectedAccomodation).subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('accomodations/', this.selectedAccomodation).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('accomodations/' + this.selectedAccomodation.id, this.selectedAccomodation).subscribe(res => this.addOrUpdate(res));
   }
   deleteAccomodation(select: Accomodations) {
     this.apiService.delete('accomodations/' + this.selectedAccomodation.id).subscribe(res => {

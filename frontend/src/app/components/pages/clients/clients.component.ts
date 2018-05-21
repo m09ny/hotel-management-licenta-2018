@@ -58,7 +58,7 @@ export class ClientsComponent implements OnInit {
     if (this.isNew)
       this.apiService.post('clients/', this.selectedClient).subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('clients/', this.selectedClient).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('clients/' + this.selectedClient.id, this.selectedClient).subscribe(res => this.addOrUpdate(res));
   }
   deleteClient(select: Clients) {
     this.apiService.delete('clients/' + this.selectedClient.id).subscribe(res => {

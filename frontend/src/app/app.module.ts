@@ -23,6 +23,7 @@ import { ScheduleModule } from 'primeng/components/schedule/schedule';
 import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
+import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 
 // Components
 import { AppComponent } from './app.component';
@@ -66,7 +67,8 @@ import { ReservationsComponent } from './components/pages/reservations/reservati
     ButtonModule,
     InputTextModule,
     ContextMenuModule,
-    DialogModule
+    DialogModule,
+    DropdownModule
   ],
   providers: [
     AppRoutingModule,
