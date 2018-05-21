@@ -1,4 +1,3 @@
-
 interface IAccomodations {
     id: number;
     id_employee: number;

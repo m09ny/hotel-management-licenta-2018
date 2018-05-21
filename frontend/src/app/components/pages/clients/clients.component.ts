@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/';
+import { Clients } from '../../../models/clients.models';
 
 @Component({
   selector: 'app-clients',
@@ -81,23 +82,4 @@ export class ClientsComponent implements OnInit {
     return client;
   }
 
-}
-interface IClients {
-  id: number;
-  firstName: string;
-  lastName: string;
-  cnp: string;
-  address: string;
-  phone: string;
-  email: string;
-}
-
-class Clients implements Clients {
-  id: number;
-  firstName: string;
-  lastName: string;
-  cnp: string;
-  address: string;
-  phone: string;
-  email: string;
 }

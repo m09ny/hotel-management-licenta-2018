@@ -36,8 +36,6 @@ import { RoomsComponent } from './components/pages/rooms/rooms.component';
 import { ClientsComponent } from './components/pages/clients/clients.component';
 import { ReservationsComponent } from './components/pages/reservations/reservations.component';
 
-import { Accomodations, Rooms } from './models'
-
 @NgModule({
   declarations: [
     AppComponent,

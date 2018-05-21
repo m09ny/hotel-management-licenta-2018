@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/';
+import { Bills } from '../../../models/bills.model';
 
 @Component({
   selector: 'app-bills',
@@ -81,19 +82,4 @@ export class BillsComponent implements OnInit {
     return bill;
   }
 
-}
-interface IBills {
-  id: number;
-  id_employee: number;
-  id_client: number;
-  date: Date;
-  amout: number;
-}
-
-class Bills implements IBills {
-  id: number;
-  id_employee: number;
-  id_client: number;
-  date: Date;
-  amout: number;
 }
