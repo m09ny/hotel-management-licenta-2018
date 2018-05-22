@@ -1,7 +1,112 @@
 <p>
-<p-dropdown [options]="rooms" [(ngModel)]="selectedRoom" (onChange)="changeRoom($event)"></p-dropdown>
+    <p-dropdown [options]="roomsInfo" [(ngModel)]="selectedRoom" (onChange)="changeRoom($event)"></p-dropdown>
 </p>
 
 <p>
-<p-schedule [events]="reservations" [header]="header" [defaultDate]="today" [editable]="true"></p-schedule>
+    <p-schedule 
+        [events]="reservations" 
+        [header]="header"
+        [defaultDate]="today"
+        [editable]="true"
+        (onEventClick)="eventClick($event)">
+    </p-schedule>
 </p>
+
+<p-dialog header="View Info" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="400">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedReservation">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="billId">Bill Id</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <div><strong>{{selectedReservation.id_bill}}</strong></div>
+            </div>
+        </div>
+        <!-- <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="billAmount">Bill Amount</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="billAmount" [(ngModel)]="selectedReservation.amount" />
+            </div>
+        </div> -->
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="clientName">Client Name</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="clientName" [(ngModel)]="selectedReservation.clientName" />
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="arrivalDate">Arrival Date</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <p-calendar inputId="arrivalDate" name="arrivalDate" [(ngModel)]="selectedReservation.startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="arrivalDate">Departure Date</label>
+            </div>
+            <div class="ui-grid-col-8">
+                {{calculateDepartureDate() | date: 'yyyy-MM-dd'}}
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="nrNights">Number of Nights</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="nrNights" [(ngModel)]="selectedReservation.nrNights" />
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="nrAdults">Number of Adults</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="nrAdults" [(ngModel)]="selectedReservation.nrAdults" />
+            </div>
+        </div> 
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="nrChildren">Number of Children</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="nrChildren" [(ngModel)]="selectedReservation.nrChildrens" />
+            </div>
+        </div>  
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="id_room">Room ID</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="id_room" [(ngModel)]="selectedReservation.id_room" />
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="id_bill">Bill ID</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="id_bill" [(ngModel)]="selectedReservation.id_bill" />
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="id_employee">Employee ID</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <input pInputText id="id_employee" [(ngModel)]="selectedReservation.id_employee" />
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="deleteReservation()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="saveReservation()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>

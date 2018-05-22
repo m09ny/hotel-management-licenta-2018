@@ -58,7 +58,7 @@ export class RoomsComponent implements OnInit {
     if (this.isNew)
       this.apiService.post('rooms/', this.selectedRoom).subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('rooms/', this.selectedRoom).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('rooms/' + this.selectedRoom.id, this.selectedRoom).subscribe(res => this.addOrUpdate(res));
   }
   deleteRoom(select: Rooms) {
     this.apiService.delete('rooms/' + this.selectedRoom.id).subscribe(res => {

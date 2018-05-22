@@ -57,7 +57,7 @@ export class EmployeesComponent implements OnInit {
     if (this.isNew)
       this.apiService.post('employees/', this.selectedEmployee).subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('employees/', this.selectedEmployee).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('employees/' + this.selectedEmployee.id, this.selectedEmployee).subscribe(res => this.addOrUpdate(res));
   }
 
   deleteEmployee(select: Employees) {

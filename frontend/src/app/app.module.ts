@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // UI
 import { SuiModule } from 'ng2-semantic-ui';
 import { DataTableModule, SharedModule } from 'primeng/primeng';
-import { DialogModule } from 'primeng/primeng';
+import { DialogModule, CalendarModule, ScheduleModule, ButtonModule } from 'primeng/primeng';
+import { InputTextModule, ContextMenuModule, DropdownModule } from 'primeng/primeng';
 
 // Services
 import { ApiService } from './service';
@@ -18,12 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { fakeBackendProvider } from './service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { ScheduleModule } from 'primeng/components/schedule/schedule';
-import { ButtonModule } from 'primeng/components/button/button';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { ContextMenuModule } from 'primeng/components/contextmenu/contextmenu';
-import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 
 // Components
 import { AppComponent } from './app.component';

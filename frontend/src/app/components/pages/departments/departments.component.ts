@@ -59,7 +59,7 @@ export class DepartmentsComponent implements OnInit {
     if (this.isNew)
       this.apiService.post('departments/', this.selectedDepartment).subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('departments/', this.selectedDepartment).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('departments/' + this.selectedDepartment.id, this.selectedDepartment).subscribe(res => this.addOrUpdate(res));
   }
   deleteDepartment(select: Departments) {
     this.apiService.delete('departments/' + this.selectedDepartment.id).subscribe(res => {
