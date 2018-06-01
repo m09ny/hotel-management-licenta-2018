@@ -3,5 +3,6 @@ export class Reservations {
     endDate: Date;
     clientName: string;
     clientId: number;
+    billId: number;
     accomodationId: number;
 }

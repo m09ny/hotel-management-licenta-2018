@@ -84,6 +84,7 @@ export class ReservationsComponent implements OnInit {
       this.reservationsInfo[rooms.id].push({
         accomodationId: accomodation.id,
         clientId: client.id,
+        billId: bill.id,
         clientName: client.firstName + " " + client.lastName,
         startDate: arrivalDate,
         endDate: departureDate
@@ -112,12 +113,18 @@ export class ReservationsComponent implements OnInit {
 
   eventClick(event) {
     this.displayDialog = !this.displayDialog;
-    this.selectedReservation = Object.assign({}, this.reservationsInfo[event.calEvent.roomId][event.calEvent.id]);
+
+    let reservation: Reservations = this.reservationsInfo[event.calEvent.roomId][event.calEvent.id]
+    this.selectedReservation = Object.assign({}, reservation);
     this.selectedReservation = Object.assign(this.selectedReservation, 
-      this.clients[this.reservationsInfo[event.calEvent.roomId][event.calEvent.id].clientId]);
+      ReservationsComponent.findIndexFromId(this.clients, reservation.clientId));
     this.selectedReservation = Object.assign(this.selectedReservation, 
-      this.accomodations[this.reservationsInfo[event.calEvent.roomId][event.calEvent.id].accomodationId]);
-    console.log(this.selectedReservation);
+      ReservationsComponent.findIndexFromId(this.accomodations, reservation.accomodationId));
+    this.selectedReservation = Object.assign(this.selectedReservation,
+      ReservationsComponent.findIndexFromId(this.bills, reservation.billId));
+
+    console.log(reservation);
+    console.log(this.bills, this.selectedReservation);
   }
 
   deleteReservation() {
@@ -132,5 +139,10 @@ export class ReservationsComponent implements OnInit {
   calculateDepartureDate() {
     let departureDate:Date = new Date(this.selectedReservation.startDate);
     return departureDate.setDate(departureDate.getDate() + parseInt(this.selectedReservation.nrNights, 10));
+  }
+
+  private static findIndexFromId<T extends { id: number }>(arr:T[], id:number): T {
+    let billIndex:number = arr.findIndex(v => v.id === id);
+    return arr[billIndex];
   }
 }
