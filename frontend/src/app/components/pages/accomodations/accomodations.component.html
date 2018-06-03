@@ -1,5 +1,5 @@
 <p-dataTable [value]="accomodations" selectionMode="single" [(selection)]="selectedAccomodation" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
-  <p-header>CRUD for Accomodations</p-header>
+  <p-header>Accomodations</p-header>
   <p-column field="id" header="Accomodation id" [sortable]="true"></p-column>
   <p-column field="id_employee" header="Employee id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
   <p-column field="id_bill" header="Bill id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>

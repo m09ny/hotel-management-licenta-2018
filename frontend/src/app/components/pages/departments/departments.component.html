@@ -1,20 +1,19 @@
-
-<p-dataTable #dt [value]="departments" [(selection)]="selectedDepartment" dataKey="id" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [editable]="true">
-  <p-header>CRUD for Departments</p-header>
-    <p-column selectionMode="multiple"></p-column>
+<p-dataTable #dt [value]="departments" selectionMode="single" [(selection)]="selectedDepartment" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+  <p-header>Departments</p-header>
     <p-column field="id" header="Department id" [sortable]="true"></p-column>
-    <p-column field="name" header="Department name" [sortable]="true" [editable]="true"></p-column>
-
-    <p-footer>
-      <div class="ui-helper-clearfix" style="width:100%">
-        <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add">
-        </button>
-      </div>
-    </p-footer>
-
-  </p-dataTable>
+    <p-column field="name" header="Department name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+    <ng-template pTemplate="emptymessage">
+      Nooooo Data
+   </ng-template>
+   <p-footer>
+    <div class="ui-helper-clearfix" style="width:100%">
+      <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add">
+      </button>
+    </div>
+  </p-footer>
+</p-dataTable>
   
-  <p-dialog header="Department Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="400">
+  <p-dialog header="Department Details"  [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="400">
     <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedDepartment">
       <div class="ui-grid-row">
         <div class="ui-grid-col-4">

@@ -1,7 +1,8 @@
-<!-- <div class="container">
-  <p>
-    Welcome {{employees}}!
-  </p>
-</div> -->
+<div class="ui-g ui-fluid">
+  <div class="ui-g-12 ui-md-4">
+    <h3>Select the date range</h3>
+    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" readonlyInput="true"></p-calendar>
+  </div>
+</div>
 
-
+<button  type="button" pButton icon="fa fa-fw fa-check" label="Show bills" (click)="showBills()"></button>

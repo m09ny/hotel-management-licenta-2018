@@ -1,5 +1,5 @@
 <p-dataTable [value]="employees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
-  <p-header>CRUD for Employees</p-header>
+  <p-header>Employees</p-header>
   <p-column field="id" header="Employee id" [sortable]="true"></p-column>
   <p-column field="id_department" header="Department id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
   <p-column field="firstName" header="First Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
@@ -25,7 +25,7 @@
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedEmployee">
     <div class="ui-grid-row">
       <div class="ui-grid-col-4">
-        <label for="idDepartment">Department</label>
+        <label for="idDepartment">Department ID</label>
       </div>
       <div class="ui-grid-col-8">
         <input pInputText id="idDepartment" [(ngModel)]="selectedEmployee.id_department" />

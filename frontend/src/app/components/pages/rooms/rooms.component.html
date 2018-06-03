@@ -1,7 +1,7 @@
 <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" label="Toggle" icon="fa-list"></button>
 
 <p-dataTable [value]="rooms" selectionMode="single" [(selection)]="selectedRoom" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [stacked]="stacked">
-  <p-header>CRUD for Rooms</p-header>
+  <p-header>Rooms</p-header>
   <p-column field="id" header="Room id"></p-column>
   <p-column field="roomType" header="Roomtype"></p-column>
   <p-column field="nrAdults" header="No of Adults"></p-column>
