@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/';
 import { MenuItem } from 'primeng/components/common/menuitem';
-import {ButtonModule} from 'primeng/components/button/button';
+import { ButtonModule } from 'primeng/components/button/button';
 
 import { Accomodations, Rooms, Clients, Bills, Reservations } from '../../../models/';
 
@@ -35,8 +35,6 @@ export class HomeComponent implements OnInit {
 
   viewBill(select: Bills) {
     console.log(JSON.stringify(select));
-
   }
-
 }
 

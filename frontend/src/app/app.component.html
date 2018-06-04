@@ -15,6 +15,12 @@
     <a class="item" href="/reservations">Reservations</a>
   </sui-sidebar>
   <sui-sidebar-sibling [isDimmedWhenVisible]="true">
-    <router-outlet></router-outlet>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
   </sui-sidebar-sibling>
 </sui-sidebar-container>

@@ -1,5 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-  padding-top: 40px;
-}
+body { padding-top: 40px; }
 .ui-dialog-mask { display: none; }
+
+.margin-none {
+	margin: 0 !important;
+}
+
+.margin-xxs {
+	margin: 5px !important;
+}
+
+.margin-xs {
+	margin: 10px !important;
+}
+
+.margin-sm {
+	margin: 15px !important;
+}
+
+.margin-md {
+	margin: 25px !important;
+}
+
+.margin-lg {
+	margin: 35px !important;
+}
+
+.margin-xl {
+	margin: 50px !important;
+}
+
+.margin-top-none {
+	margin-top: 0px !important;
+}
+
+.margin-top-xxs {
+	margin-top: 5px !important;
+}
+
+.margin-top-xs {
+	margin-top: 10px !important;
+}
+
+.margin-top-sm {
+	margin-top: 15px !important;
+}
+
+.margin-top-md {
+	margin-top: 25px !important;
+}
+
+.margin-top-lg {
+	margin-top: 35px !important;
+}
+
+.margin-top-xl {
+	margin-top: 50px !important;
+}
+
+.margin-left-none {
+	margin-left: 0px !important;
+}
+
+.margin-left-xxs {
+	margin-left: 5px !important;
+}
+
+.margin-left-xs {
+	margin-left: 10px !important;
+}
+
+.margin-left-sm {
+	margin-left: 15px !important;
+}
+
+.margin-left-md {
+	margin-left: 25px !important;
+}
+
+.margin-left-lg {
+	margin-left: 35px !important;
+}
+
+.margin-left-xl {
+	margin-left: 50px !important;
+}
+
+.margin-bottom-none {
+	margin-bottom: 0px !important;
+}
+
+.margin-bottom-xxs {
+	margin-bottom: 5px !important;
+}
+
+.margin-bottom-xs {
+	margin-bottom: 10px !important;
+}
+
+.margin-bottom-sm {
+	margin-bottom: 15px !important;
+}
+
+.margin-bottom-md {
+	margin-bottom: 25px !important;
+}
+
+.margin-bottom-lg {
+	margin-bottom: 35px !important;
+}
+
+.margin-bottom-xl {
+	margin-bottom: 50px !important;
+}
+
+.margin-right-none {
+	margin-right: 0px !important;
+}
+
+.margin-right-xxs {
+	margin-right: 5px !important;
+}
+
+.margin-right-xs {
+	margin-right: 10px !important;
+}
+
+.margin-right-sm {
+	margin-right: 15px !important;
+}
+
+.margin-right-md {
+	margin-right: 25px !important;
+}
+
+.margin-right-lg {
+	margin-right: 35px !important;
+}
+
+.margin-right-xl {
+	margin-right: 50px !important;
+}

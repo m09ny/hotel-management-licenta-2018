@@ -22,7 +22,8 @@ import { BaseRequestOptions } from '@angular/http';
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components';
+import { LoginComponent } from './components/pages/login/login.component';
+import { HomeComponent } from './components/pages/home/home.component';
 import { UserComponent } from './components/pages/user/user.component';
 import { EmployeesComponent } from './components/pages/employees/employees.component';
 import { DepartmentsComponent } from './components/pages/departments/departments.component';
@@ -35,6 +36,7 @@ import { ReservationsComponent } from './components/pages/reservations/reservati
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     HomeComponent,
     UserComponent,
     EmployeesComponent,
