@@ -1,4 +1,4 @@
-const user = require('./user');
+const users = require('./users');
 const departments = require('./departments');
 const employees = require('./employees');
 const bills = require('./bills');
@@ -7,7 +7,7 @@ const rooms = require('./rooms');
 const clients = require('./clients');
 
 module.exports = {
-  user,
+  users,
   employees,
   departments,
   bills,

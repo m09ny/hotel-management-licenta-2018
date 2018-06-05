@@ -28,7 +28,6 @@ export class ApiService {
       .map((res: Response) => res.json());
   }
 
-
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${environment.api_url}${path}`,

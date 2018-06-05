@@ -1,20 +1,20 @@
 "use strict";
 
-const user = require('../models').user;
+const users = require('../models').users;
 
 exports.list = function (req, res) {
-  user.findAll().then(user => {
+  users.findAll().then(user => {
     res.jsonp(user);
   }).catch((error) => res.status(400).send(error));
 };
 
 exports.create = function (req, res) {
-  res.jsonp(user.create(req.body));
+  res.jsonp(users.create(req.body));
 };
 
 exports.findById = function (req, res) {
   let id = req.params.id;
-  user.findById(id).then(user => {
+  users.findById(id).then(user => {
     if (!user) {
       return res.status(400).send({
         message: 'User Not Found',
@@ -26,7 +26,7 @@ exports.findById = function (req, res) {
 
 exports.delete = function (req, res) {
   let id = req.params.id;
-  user.findById(req.params.id)
+  users.findById(req.params.id)
     .then(user => {
       if (!user) {
         return res.status(400).send({

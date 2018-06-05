@@ -11,8 +11,10 @@ import { DataTableModule, SharedModule } from 'primeng/primeng';
 import { DialogModule, CalendarModule, ScheduleModule, ButtonModule } from 'primeng/primeng';
 import { InputTextModule, ContextMenuModule, DropdownModule } from 'primeng/primeng';
 
+import { AuthGuard } from './guards/auth.guard';
+
 // Services
-import { ApiService } from './service';
+import { ApiService, LoginService } from './service';
 import { AppRoutingModule } from './app-routing.module';
 
 // used to create fake backend
@@ -68,8 +70,10 @@ import { ReservationsComponent } from './components/pages/reservations/reservati
     DropdownModule
   ],
   providers: [
+    AuthGuard,
     AppRoutingModule,
     ApiService,
+    LoginService
     // providers used to create fake backend
     // fakeBackendProvider,
     // MockBackend,
