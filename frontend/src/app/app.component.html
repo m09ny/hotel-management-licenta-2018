@@ -1,6 +1,9 @@
-<div class="ui top fixed menu inverted large">
+<div class="ui top fixed menu inverted large" *ngIf="hideMenu()">
   <a class="item" (click)="sidebar.toggle()">
     <i class="sidebar icon"></i> Menu
+  </a>
+  <a class="item" (click)="logout()">
+    {{currentUser.userName}} Logout
   </a>
 </div>
 <sui-sidebar-container class="ui bottom attached segment">

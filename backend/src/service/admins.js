@@ -13,13 +13,27 @@ exports.create = function (req, res) {
 };
 
 exports.login = function (req, res) {
-  let userName = req.params.userName;
-  let password = req.params.password;
-  admins.findAll().then(admin => {
-    if (admin.userName === userName && admin.password === password) {
-      res.jsonp(admin);
-    }
-  }).catch((error) => res.status(400).send(error));
+  let userName = req.body.userName;
+  let password = req.body.password
+  admins.findAll()
+    .then(admins => {
+      let found = false;
+      for (let i = 0, n = admins.length; i < n; i++) {
+        let admin = admins[i].dataValues;
+        found = admin.userName === userName && admin.password === password;
+        if (found) {
+          res.jsonp(admin);
+          break;
+        }
+      }
+      console.log("found:" + found);
+      if (!found) {
+        res.status(404);
+        res.jsonp({"message": "User not found!"});
+      }
+    })
+    .catch((error) => res.status(400)
+    .send(error));
 };
 
 exports.findById = function (req, res) {

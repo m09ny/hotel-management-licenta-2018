@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var user = require('../service').user;
+var users = require('../service').users;
 
-router.get('/', user.list);
-router.get('/:id', user.findById);
-router.post('/', user.create);
-router.delete('/:id', user.delete);
+router.get('/', users.list);
+router.get('/:id', users.findById);
+router.post('/', users.create);
+router.delete('/:id', users.delete);
 module.exports = router;

@@ -57,7 +57,6 @@ import { ReservationsComponent } from './components/pages/reservations/reservati
     HttpModule,
     ReactiveFormsModule,
     SuiModule,
-    // Prime
     DataTableModule,
     SharedModule,
     FormsModule,
@@ -74,10 +73,6 @@ import { ReservationsComponent } from './components/pages/reservations/reservati
     AppRoutingModule,
     ApiService,
     LoginService
-    // providers used to create fake backend
-    // fakeBackendProvider,
-    // MockBackend,
-    // BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 })

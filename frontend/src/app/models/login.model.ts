@@ -2,12 +2,12 @@ interface ILogin {
     userName: string;
     id: number;
     password: string;
-    remember: boolean;
+    remember?: boolean;
 }
     
 export class Login implements ILogin {
     id: number;
     userName: string;
     password: string;
-    remember: boolean = true;
+    remember?: boolean = true;
 }

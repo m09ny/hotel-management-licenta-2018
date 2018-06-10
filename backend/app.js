@@ -21,10 +21,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 // Controllers
 var index = require('./src/rest/index');
-var user = require('./src/rest/user');
+var users = require('./src/rest/users');
+var admins = require('./src/rest/admins');
 var employees = require('./src/rest/employees');
 var departments = require('./src/rest/departments');
 var bills = require('./src/rest/bills');
@@ -33,7 +33,8 @@ var rooms = require('./src/rest/rooms');
 var clients = require('./src/rest/clients');
 
 app.use('/', index);
-app.use('/user', user);
+app.use('/users', users);
+app.use('/admins', admins);
 app.use('/employees', employees);
 app.use('/departments', departments);
 app.use('/bills', bills);
