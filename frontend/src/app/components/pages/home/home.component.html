@@ -1,8 +1,53 @@
-<div class="ui-g ui-fluid">
-  <div class="ui-g-12 ui-md-4">
-    <h3>Select the date range</h3>
-    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" readonlyInput="true"></p-calendar>
+<div class="ui-grid ui-grid-responsive ui-fluid">
+  <div class="ui-grid-row">
+    <div class="ui-g-12 ui-md-4">
+        <h3>Select the date range</h3>
+        <p-calendar [(ngModel)]="rangeDates" selectionMode="range" readonlyInput="true"></p-calendar>
+      
+        <button type="button" 
+          [disabled]="isDisabled()"
+          pButton icon="fa fa-fw fa-check"
+          label="Show bills"
+          (click)="showBills()"
+          class="margin-top-xs margin-bottom-xs"
+          style="width:120px">
+        </button>
+
+        <button type="button" 
+          [disabled]="isDisabled()"
+          pButton icon="fa fa-fw fa-check"
+          label="Show accomodations"
+          (click)="showAccomodations()"
+          class="margin-top-xs margin-bottom-xs"
+          style="width:190px">
+        </button>
+      </div>
   </div>
+  <div class="ui-grid-row">
+    <div class="ui-g-12 ui-md-12">
+      <p-dataTable *ngIf="visibleBills" [value]="filteredBills" selectionMode="single" [paginator]="true" rows="15" [responsive]="true">
+        <p-header>Bills</p-header>
+        <p-column field="id_employee" header="Employee id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="id_client" header="Client id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="date" header="Date" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="amout" header="Amount" [sortable]="true" styleClass="text-center"></p-column>
+        <ng-template pTemplate="emptymessage">
+            No Data
+        </ng-template>      
+      </p-dataTable>
+
+      <p-dataTable *ngIf="visibleAccomodations" [value]="filteredAccomodations" selectionMode="single" [paginator]="true" rows="15" [responsive]="true">
+        <p-header>Accomodations</p-header>
+        <p-column field="id_room" header="Room id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="arrivelDate" header="Arrival Date (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="nrNights" header="No of nights" [filter]="true" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="nrAdults" header="No of adults" [filter]="true" [sortable]="true" styleClass="text-center"></p-column>
+        <p-column field="nrChildrens" header="No of childrens" [sortable]="true" styleClass="text-center"></p-column>
+        <ng-template pTemplate="emptymessage">
+            No Data
+        </ng-template>
+      </p-dataTable>
+    </div>
+    </div>
 </div>
 
-<button type="button" pButton icon="fa fa-fw fa-check" label="Show bills" (click)="showBills()"></button>

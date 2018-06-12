@@ -4,6 +4,7 @@ import { MenuItem } from 'primeng/components/common/menuitem';
 import { ButtonModule } from 'primeng/components/button/button';
 
 import { Accomodations, Rooms, Clients, Bills, Reservations } from '../../../models/';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,14 @@ import { Accomodations, Rooms, Clients, Bills, Reservations } from '../../../mod
 export class HomeComponent implements OnInit {
   rangeDates: Date[];
   bills: Bills[];
+  filteredBills: Bills[];
+  visibleBills:boolean = false;
+
+  accomodations: Accomodations[];
+  filteredAccomodations: Accomodations[];
+  visibleAccomodations: boolean = false;
+
+  clients: Clients[];
 
   constructor(private apiService: ApiService) { }
 
@@ -28,13 +37,36 @@ export class HomeComponent implements OnInit {
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
 
-    this.apiService.get('bills/').subscribe(res => {
-      this.bills = res;
+    Observable.forkJoin([
+      this.apiService.get('bills/'),
+      this.apiService.get('accomodations/'),
+      this.apiService.get('clients/')
+    ]).subscribe((v: [Bills[], Accomodations[], Clients[]]) => {
+      this.bills = v[0];
+      this.accomodations = v[1];
+      this.clients = v[2];
     });
   }
 
-  viewBill(select: Bills) {
-    console.log(JSON.stringify(select));
+  isDisabled() {
+    return (this.rangeDates || []).length <= 1;
+  }
+
+  showBills() {
+    this.filteredBills = this.bills.filter(v => new Date(v.date) >= this.rangeDates[0] 
+      && new Date(v.date) <= this.rangeDates[1]);
+    this.visibleBills = true;
+    this.visibleAccomodations = false;
+  }
+
+  showAccomodations() {
+    this.filteredAccomodations = this.accomodations.filter(v => {
+        let arrivalDate:Date = new Date(v.arrivelDate),
+          departureDate:Date = new Date(v.arrivelDate);
+          departureDate.setDate(departureDate.getDate() + v.nrNights);
+        return arrivalDate >= this.rangeDates[0] && departureDate <= this.rangeDates[1]
+      });
+    this.visibleBills = false;
+    this.visibleAccomodations = true;
   }
 }
-
