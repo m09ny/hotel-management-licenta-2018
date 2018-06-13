@@ -2,9 +2,11 @@
   <a class="item" (click)="sidebar.toggle()">
     <i class="sidebar icon"></i> Menu
   </a>
-  <a class="item" (click)="logout()">
-    Logout {{currentUser.userName}} 
-  </a>
+  <div class="menu right">
+    <a class="item" (click)="logout()">
+      Logout {{currentUser.userName}} 
+    </a>
+  </div>
 </div>
 <sui-sidebar-container class="ui bottom attached segment">
   <sui-sidebar class="inverted vertical" #sidebar>
@@ -18,12 +20,22 @@
     <a class="item" href="/reservations">Reservations</a>
   </sui-sidebar>
   <sui-sidebar-sibling [isDimmedWhenVisible]="true">
-    <div class="container">
+    <div class="container margin-top-xs">
       <div class="row">
         <div class="col-md-12">
           <router-outlet></router-outlet>
         </div>
       </div>
     </div>
+    
+    <hr />
+
+    <footer class="margin-bottom-sm">
+      <div class="container">
+        <p>
+          <a href="/home">Hotel Monica</a>
+        </p>    
+      </div>
+    </footer>
   </sui-sidebar-sibling>
 </sui-sidebar-container>

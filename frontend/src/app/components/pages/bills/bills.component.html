@@ -3,7 +3,11 @@
     <p-column field="id" header="Bill id" [sortable]="true"></p-column>
     <p-column field="id_employee" header="Employee ID" [sortable]="true"></p-column>
     <p-column field="id_client" header="Client ID" [sortable]="true"></p-column>
-    <p-column field="date" header="Bill Date" [sortable]="true"></p-column>
+    <p-column field="date" header="Bill Date" [sortable]="true">
+      <ng-template pTemplate="body" let-row="rowData">
+        {{row.date | date:'yyyy-MM-dd'}}
+      </ng-template>
+    </p-column>
     <p-column field="amout" header="Amount" [sortable]="true"></p-column>
 
     <p-footer>
@@ -38,7 +42,7 @@
           <label for="date">Date</label>
         </div>
         <div class="ui-grid-col-8">
-          <input pInputText id="date" [(ngModel)]="selectedBill.date" />
+          <input pInputText id="date" [ngModel]="selectedBill.date | date:'yyyy-MM-dd'" (ngModelChange)="selectedBill.date=$event" />
         </div>
       </div>
       <div class="ui-grid-row">

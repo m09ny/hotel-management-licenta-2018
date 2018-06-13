@@ -61,11 +61,13 @@ exports.update = function (req, res) {
     employees.role = req.body.role ;
     employees.salary = req.body.salary ;
 
-    employees.save(function(err) {
-      if (err)
-          res.send(err);
-
-      res.json({ message: 'Employee was updated!' });
-    });
+    employees.save()
+      .then(() => {
+        res.json({ message: 'Employee was updated!' });
+      })
+      .catch((err) => {
+        if (err)
+          res.status(400).send(err);
+      });
   });
 };

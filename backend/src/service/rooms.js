@@ -33,10 +33,9 @@ exports.delete = function (req, res) {
           message: 'Room Not Found',
         });
       }
-      return rooms
-      .destroy()
-      .then(() => res.status(204).send())
-      .catch(error => res.status(400).send(error));
+      return rooms.destroy()
+        .then(() => res.status(204).send())
+        .catch(error => res.status(400).send(error));
     })
     .catch(error => res.status(400).send(error));
 };
@@ -54,11 +53,12 @@ exports.update = function (req, res) {
     rooms.nrChildrens = req.body.nrChildrens; 
     rooms.priceNight = req.body.priceNight;     
 
-    rooms.save(function(err) {
-      if (err)
-          res.send(err);
-
-      res.json({ message: 'Room was updated!' });
-    });
+    rooms.save()
+      .then(() => {
+        res.json({ message: 'Room was updated!' });
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
   });
 };

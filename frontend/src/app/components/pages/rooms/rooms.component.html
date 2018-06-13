@@ -2,11 +2,11 @@
 
 <p-dataTable [value]="rooms" selectionMode="single" [(selection)]="selectedRoom" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [stacked]="stacked">
   <p-header>Rooms</p-header>
-  <p-column field="id" header="Room id"></p-column>
-  <p-column field="roomType" header="Roomtype"></p-column>
+  <p-column field="id" header="Room ID"></p-column>
+  <p-column field="roomType" header="Room type"></p-column>
   <p-column field="nrAdults" header="No of Adults"></p-column>
   <p-column field="nrChildrens" header="No of Childrens"></p-column>
-  <p-column field="priceNight" header="Price/night"></p-column>
+  <p-column field="priceNight" header="Price per night (RON)"></p-column>
 
   <p-footer>
     <div class="ui-helper-clearfix" style="width:100%">
@@ -21,7 +21,7 @@
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedRoom">
     <div class="ui-grid-row">
       <div class="ui-grid-col-4">
-        <label for="roomType">Roomtype</label>
+        <label for="roomType">Room type</label>
       </div>
       <div class="ui-grid-col-8">
         <input pInputText id="roomType" [(ngModel)]="selectedRoom.roomType" />
@@ -45,7 +45,7 @@
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-4">
-        <label for="priceNight">Price/Night</label>
+        <label for="priceNight">Price per night (RON)</label>
       </div>
       <div class="ui-grid-col-8">
         <input pInputText id="priceNight" [(ngModel)]="selectedRoom.priceNight" />

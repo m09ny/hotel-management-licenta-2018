@@ -58,11 +58,13 @@ exports.update = function (req, res) {
     clients.createdAt= req.body.createdAt ;
     clients.updatedAt = req.body.updatedAt ;
 
-    clients.save(function(err) {
-      if (err)
-          res.send(err);
-
-      res.json({ message: 'Client was updated!' });
-    });
+    clients.save()
+      .then(() => {
+        res.json({ message: 'Client was updated!' });
+      })
+      .catch((err) => {
+        if (err)
+          res.status(400).send(err);
+      });
   });
 };

@@ -32,10 +32,9 @@ exports.delete = function (req, res) {
           message: 'Department Not Found',
         });
       }
-      return departments
-      .destroy()
-      .then(() => res.status(204).send())
-      .catch(error => res.status(400).send(error));
+      return departments.destroy()
+        .then(() => res.status(204).send())
+        .catch(error => res.status(400).send(error));
     })
     .catch(error => res.status(400).send(error));
 };
@@ -49,11 +48,13 @@ exports.update = function (req, res) {
       });
     }
     departments.name = req.body.name; 
-    departments.save(function(err) {
-      if (err)
-          res.send(err);
-
-      res.json({ message: 'Department was updated!' });
-    });
+    departments.save()
+      .then(() => {
+         res.json({ message: 'Department was updated!' });
+      })
+      .catch((err) => {
+        if (err)
+          res.status(400).send(err);
+      });
   });
 };

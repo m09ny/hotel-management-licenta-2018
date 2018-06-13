@@ -4,7 +4,11 @@
   <p-column field="id_employee" header="Employee id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
   <p-column field="id_bill" header="Bill id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
   <p-column field="id_room" header="Room id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
-  <p-column field="arrivelDate" header="Arrival date" [sortable]="true"></p-column>
+  <p-column field="arrivelDate" header="Arrival date" [sortable]="true">
+    <ng-template pTemplate="body" let-row="rowData">
+      {{row.arrivelDate | date:'yyyy-MM-dd'}}
+    </ng-template>
+  </p-column>
   <p-column field="nrNights" header="No of Nights" [sortable]="true"></p-column>
   <p-column field="nrAdults" header="No of Adults" [sortable]="true"></p-column>
   <p-column field="nrChildrens" header="No of Childrens" [sortable]="true"></p-column>
@@ -52,7 +56,7 @@
         <label for="arrivelDate">Arrival Date</label>
       </div>
       <div class="ui-grid-col-8">
-        <input pInputText id="arrivelDate" [(ngModel)]="selectedAccomodation.arrivelDate" />
+        <input pInputText id="arrivelDate" [ngModel]="selectedAccomodation.arrivelDate|date:'yyyy-MM-dd'" (ngModelChange)="selectedAccomodation.arrivelDate=$event" />
       </div>
     </div>
     <div class="ui-grid-row">

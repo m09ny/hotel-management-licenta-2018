@@ -7,7 +7,11 @@
   <p-column field="cnp" header="CNP" [sortable]="true"></p-column>
   <p-column field="address" header="Address (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
   <p-column field="phone" header="Phone" [sortable]="true"></p-column>
-  <p-column field="employment_date" header="Employment date (contains)" [filter]="true" filterMatchMode="contains"  [sortable]="true"></p-column>
+  <p-column field="employment_date" header="Employment date (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true">
+    <ng-template pTemplate="body" let-row="rowData">
+      {{row.employment_date | date:'yyyy-MM-dd'}}
+    </ng-template>
+  </p-column>
   <p-column field="role" header="Role" [sortable]="true"></p-column>
   <p-column field="salary" header="Salary" [sortable]="true"></p-column>
   <ng-template pTemplate="emptymessage">
@@ -76,7 +80,7 @@
         <label for="eDate">Employment Date</label>
       </div>
       <div class="ui-grid-col-8">
-        <input pInputText id="eDate" [(ngModel)]="selectedEmployee.employment_date" />
+        <input pInputText id="eDate" [ngModel]="selectedEmployee.employment_date | date:'yyyy-MM-dd'" (ngModelChange)="selectedEmployee.employment_date=$event"  />
       </div>
     </div>
     <div class="ui-grid-row">

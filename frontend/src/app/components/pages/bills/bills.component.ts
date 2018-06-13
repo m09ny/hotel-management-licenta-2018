@@ -26,10 +26,12 @@ export class BillsComponent implements OnInit {
     });
   
   }
+
   viewBill(select: Bills) {
     console.log(JSON.stringify(select));
 
   }
+
   showDialogToAdd() {
     this.selectedBill = new Bills();
     this.isNew = true;
@@ -56,10 +58,13 @@ export class BillsComponent implements OnInit {
 
   updateBill(select: Bills) {
     if (this.isNew)
-      this.apiService.post('bills/', this.selectedBill).subscribe(res => this.addOrUpdate(res));
+      this.apiService.post('bills/', this.selectedBill)
+        .subscribe(res => this.addOrUpdate(res));
     else
-      this.apiService.put('bills/' + this.selectedBill.id, this.selectedBill).subscribe(res => this.addOrUpdate(res));
+      this.apiService.put('bills/' + this.selectedBill.id, this.selectedBill)
+        .subscribe(res => this.addOrUpdate(res));
   }
+
   deleteBill(select: Bills) {
     this.apiService.delete('bills/' + this.selectedBill.id).subscribe(res => {
       let index = this.findBillIndex();

@@ -2,6 +2,7 @@
 body { padding-top: 40px; }
 .ui-dialog-mask { display: none; }
 .ui.attached.segment { border: 0 none }
+/*.ui.attached.segment { height: auto !important }*/
 
 .margin-none {
 	margin: 0 !important;

@@ -54,11 +54,13 @@ exports.update = function (req, res) {
     bills.date = req.body.date; 
     bills.amout = req.body.amout;     
 
-    bills.save(function(err) {
-      if (err)
-          res.send(err);
-
-      res.json({ message: 'Bill was updated!' });
-    });
+    bills.save()
+      .then(() => {
+        res.json({ message: 'Bill was updated!' });
+      })
+      .catch((err) => {
+        if (err)
+          res.status(400).send(err);
+      });
   });
 };

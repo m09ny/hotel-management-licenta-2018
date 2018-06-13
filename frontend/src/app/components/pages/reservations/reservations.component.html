@@ -1,16 +1,22 @@
-<p>
-    <p-dropdown [options]="roomsInfo" [(ngModel)]="selectedRoom" (onChange)="changeRoom($event)"></p-dropdown>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <p>
+                <p-dropdown [options]="roomsInfo" [(ngModel)]="selectedRoom" (onChange)="changeRoom($event)"></p-dropdown>
+            </p>
 
-<p>
-    <p-schedule 
-        [events]="reservations" 
-        [header]="header"
-        [defaultDate]="today"
-        [editable]="true"
-        (onEventClick)="eventClick($event)">
-    </p-schedule>
-</p>
+            <p>
+                <p-schedule 
+                    [events]="reservations" 
+                    [header]="header"
+                    [defaultDate]="today"
+                    [editable]="true"
+                    (onEventClick)="eventClick($event)">
+                </p-schedule>
+            </p>
+        </div>
+    </div>
+</div>
 
 <p-dialog header="View Info" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="400">
     <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedReservation">

@@ -35,8 +35,8 @@ exports.delete = function (req, res) {
       }
       return accomodations
         .destroy()
-        .then(() => res.status(204).send())
-        .catch(error => res.status(400).send(error));
+          .then(() => res.status(204).send())
+          .catch(error => res.status(400).send(error));
     })
     .catch(error => res.status(400).send(error));
 };
@@ -57,11 +57,13 @@ exports.update = function (req, res) {
     accomodations.nrAdults = req.body.nrAdults;
     accomodations.nrChildrens = req.body.nrChildrens;
 
-    accomodations.save(function(err) {
-      if (err)
-          res.send(err);
-
-      res.json({ message: 'Accomodation was updated!' });
-    });
+    accomodations.save
+      .then(() => {
+        res.json({ message: 'Accomodation was updated!' });
+      })
+      .catch((err) => {
+        if (err)
+          res.status(400).send(err);
+      });
   });
 };
