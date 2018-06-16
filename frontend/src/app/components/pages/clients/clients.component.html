@@ -1,12 +1,12 @@
-<p-dataTable [value]="clients" selectionMode="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+<p-dataTable [value]="clients" selectionMode="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [tableStyle]="{'table-layout':'auto'}">
     <p-header>Clients</p-header>
-    <p-column field="id" header="Client id" [sortable]="true"></p-column>
-    <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
-    <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
-    <p-column field="cnp" header="CNP" [sortable]="true"></p-column>
-    <p-column field="address" header="Address" [sortable]="true"></p-column>
-    <p-column field="phone" header="Phone" [sortable]="true"></p-column>
-    <p-column field="email" header="Email" [sortable]="true"></p-column>
+    <p-column field="id" header="Client id" [sortable]="true" styleClass="text-center"></p-column>
+    <p-column field="firstName" header="First Name" [sortable]="true" styleClass="text-left"></p-column>
+    <p-column field="lastName" header="Last Name" [sortable]="true" styleClass="text-left"></p-column>
+    <p-column field="cnp" header="CNP" [sortable]="true" styleClass="text-center"></p-column>
+    <p-column field="address" header="Address" [sortable]="true" styleClass="text-left"></p-column>
+    <p-column field="phone" header="Phone" [sortable]="true" styleClass="text-center"></p-column>
+    <p-column field="email" header="Email" [sortable]="true" styleClass="text-left"></p-column>
 
     <p-footer>
       <div class="ui-helper-clearfix" style="width:100%">

@@ -1,12 +1,12 @@
 <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" label="Toggle" icon="fa-list"></button>
 
-<p-dataTable [value]="rooms" selectionMode="single" [(selection)]="selectedRoom" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [stacked]="stacked">
+<p-dataTable [value]="rooms" selectionMode="single" [(selection)]="selectedRoom" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [stacked]="stacked" [tableStyle]="{'table-layout':'auto'}">
   <p-header>Rooms</p-header>
-  <p-column field="id" header="Room ID"></p-column>
-  <p-column field="roomType" header="Room type"></p-column>
-  <p-column field="nrAdults" header="No of Adults"></p-column>
-  <p-column field="nrChildrens" header="No of Childrens"></p-column>
-  <p-column field="priceNight" header="Price per night (RON)"></p-column>
+  <p-column field="id" header="Room ID" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="roomType" header="Room type" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="nrAdults" header="No of Adults" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="nrChildrens" header="No of Childrens" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="priceNight" header="Price per night (RON)" [sortable]="true" styleClass="text-center"></p-column>
 
   <p-footer>
     <div class="ui-helper-clearfix" style="width:100%">

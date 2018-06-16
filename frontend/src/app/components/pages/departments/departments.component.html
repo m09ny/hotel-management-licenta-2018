@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <p-dataTable #dt [value]="departments" selectionMode="single" [(selection)]="selectedDepartment" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+      <p-dataTable #dt [value]="departments" selectionMode="single" [(selection)]="selectedDepartment" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [tableStyle]="{'table-layout':'auto'}">
         <p-header>Departments</p-header>
-          <p-column field="id" header="Department id" [sortable]="true"></p-column>
-          <p-column field="name" header="Department name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+          <p-column field="id" header="Department id" [sortable]="true" styleClass="text-center"></p-column>
+          <p-column field="name" header="Department name" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
           <ng-template pTemplate="emptymessage">
             Nooooo Data
           </ng-template>

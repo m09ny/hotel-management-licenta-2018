@@ -1,19 +1,19 @@
-<p-dataTable [value]="employees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+<p-dataTable [value]="employees" selectionMode="single" [(selection)]="selectedEmployee" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true" [tableStyle]="{'table-layout':'auto'}">
   <p-header>Employees</p-header>
-  <p-column field="id" header="Employee id" [sortable]="true"></p-column>
-  <p-column field="id_department" header="Department id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
-  <p-column field="firstName" header="First Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
-  <p-column field="lastName" header="Last Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
-  <p-column field="cnp" header="CNP" [sortable]="true"></p-column>
-  <p-column field="address" header="Address (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
-  <p-column field="phone" header="Phone" [sortable]="true"></p-column>
-  <p-column field="employment_date" header="Employment date (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true">
+  <p-column field="id" header="Employee id" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="id_department" header="Department id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="firstName" header="First Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="lastName" header="Last Name (startsWith)" [filter]="true" filterPlaceholder="Search" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="cnp" header="CNP" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="address" header="Address (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="phone" header="Phone" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="employment_date" header="Employment date (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center">
     <ng-template pTemplate="body" let-row="rowData">
       {{row.employment_date | date:'yyyy-MM-dd'}}
     </ng-template>
   </p-column>
-  <p-column field="role" header="Role" [sortable]="true"></p-column>
-  <p-column field="salary" header="Salary" [sortable]="true"></p-column>
+  <p-column field="role" header="Role" [sortable]="true" styleClass="text-center"></p-column>
+  <p-column field="salary" header="Salary" [sortable]="true" styleClass="text-center"></p-column>
   <ng-template pTemplate="emptymessage">
      Nooooo Data
   </ng-template>
@@ -80,7 +80,7 @@
         <label for="eDate">Employment Date</label>
       </div>
       <div class="ui-grid-col-8">
-        <input pInputText id="eDate" [ngModel]="selectedEmployee.employment_date | date:'yyyy-MM-dd'" (ngModelChange)="selectedEmployee.employment_date=$event"  />
+          <input pInputText id="eDate" [ngModel]="selectedEmployee.employment_date | date:'yyyy-MM-dd'" (ngModelChange)="selectedEmployee.employment_date=$event" />
       </div>
     </div>
     <div class="ui-grid-row">

@@ -25,7 +25,7 @@
   </div>
   <div class="ui-grid-row">
     <div class="ui-g-12 ui-md-12">
-      <p-dataTable *ngIf="visibleBills" [value]="filteredBills" selectionMode="single" [paginator]="true" rows="15" [responsive]="true">
+      <p-dataTable *ngIf="visibleBills" [value]="filteredBills" selectionMode="single" [paginator]="true" rows="15" [responsive]="true" [tableStyle]="{'table-layout':'auto'}">
         <p-header>Bills</p-header>
         <p-column field="id_employee" header="Employee id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
         <p-column field="id_client" header="Client id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
@@ -40,7 +40,7 @@
         </ng-template>      
       </p-dataTable>
 
-      <p-dataTable *ngIf="visibleAccomodations" [value]="filteredAccomodations" selectionMode="single" [paginator]="true" rows="15" [responsive]="true">
+      <p-dataTable *ngIf="visibleAccomodations" [value]="filteredAccomodations" selectionMode="single" [paginator]="true" rows="15" [responsive]="true" [tableStyle]="{'table-layout':'auto'}">
         <p-header>Accomodations</p-header>
         <p-column field="id_room" header="Room id (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center"></p-column>
         <p-column field="arrivelDate" header="Arrival Date (contains)" [filter]="true" filterMatchMode="contains" [sortable]="true" styleClass="text-center">

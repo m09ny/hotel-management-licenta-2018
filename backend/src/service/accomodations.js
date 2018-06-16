@@ -57,7 +57,7 @@ exports.update = function (req, res) {
     accomodations.nrAdults = req.body.nrAdults;
     accomodations.nrChildrens = req.body.nrChildrens;
 
-    accomodations.save
+    accomodations.save()
       .then(() => {
         res.json({ message: 'Accomodation was updated!' });
       })

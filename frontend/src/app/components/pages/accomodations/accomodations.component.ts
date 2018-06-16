@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service';
 import { Accomodations } from '../../../models';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Dropdown } from 'primeng/primeng';
 
 @Component({
   selector: 'app-accomodations',

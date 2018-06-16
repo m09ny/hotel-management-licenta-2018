@@ -123,17 +123,43 @@ export class ReservationsComponent implements OnInit {
     this.selectedReservation = Object.assign(this.selectedReservation,
       ReservationsComponent.findIndexFromId(this.bills, reservation.billId));
 
-    console.log(reservation);
-    console.log(this.bills, this.selectedReservation);
+    //console.log(reservation);
+    //console.log(this.bills, this.selectedReservation);
   }
 
-  deleteReservation() {
-    console.log("delete");
+  deleteReservation(select: Reservations) {
+    this.apiService.delete('reservations/' + this.selectedReservation.id).subscribe(res => {
+      let index = this.findReservationIndex();
+      this.reservations = this.reservations.filter((val, i) => i !== index);
+      this.selectedReservation = null;
+      this.displayDialog = false;
+      console.log(res);
+    });
   }
 
-  saveReservation() {
+
+  saveReservation(select: Reservations) {
     this.displayDialog = false;
-    console.log(this.selectedReservation);
+    this.apiService.put('reservations/' + this.selectedReservation.id, this.selectedReservation)
+      .subscribe(res => this.update(res));
+  }
+
+
+  update(res) {
+    let reservations = [...this.reservations];
+    console.log(reservations[this.findReservationIndex()]);
+    reservations[this.findReservationIndex()] = this.selectedReservation;
+    this.reservations = reservations; 
+
+    console.log(this.reservations);
+    this.selectedReservation = null;
+    this.displayDialog = false;  
+   
+  }
+
+  findReservationIndex(): number {
+    console.log(this.selectedReservation.id);
+    return this.reservations.findIndex((element) => element.id === this.selectedReservation.id);
   }
 
   calculateDepartureDate() {
