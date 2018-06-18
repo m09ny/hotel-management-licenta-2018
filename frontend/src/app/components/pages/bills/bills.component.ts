@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
 
 import { ApiService } from '../../../service/';
 import { Bills } from '../../../models/bills.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Dropdown } from 'primeng/primeng';
 
 @Component({
   selector: 'app-bills',
@@ -84,11 +81,15 @@ export class BillsComponent implements OnInit {
   }
 
   cloneBill(b: Bills): Bills {
-    let bill= new Bills();
+    let bill = new Bills();
     for(let prop in b) {
-      bill[prop] = b[prop];
+      let propVal = new Date(b[prop]);
+      if (propVal instanceof Date && !isNaN(propVal.getTime()) && isNaN(b[prop])) {
+        bill[prop] = moment(propVal).format("YYYY-MM-DD");
+      } else {
+        bill[prop] = b[prop];
+      }
     }
     return bill;
   }
-
 }

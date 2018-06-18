@@ -56,7 +56,7 @@
         <label for="arrivelDate">Arrival Date</label>
       </div>
       <div class="ui-grid-col-8">
-        <input pInputText id="arrivelDate" [ngModel]="selectedAccomodation.arrivelDate | date:'yyyy-MM-dd'" (ngModelChange)="selectedAccomodation.arrivelDate=$event" />
+          <p-calendar inputId="arrivelDate" name="arrivelDate" [(ngModel)]="selectedAccomodation.arrivelDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
       </div>
     </div>
     <div class="ui-grid-row">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-employees',
@@ -77,7 +78,12 @@ export class EmployeesComponent implements OnInit {
   cloneEmployee(e: Employees): Employees {
     let employee = new Employees();
     for(let prop in e) {
-      employee[prop] = e[prop];
+      let propVal = new Date(e[prop]);
+      if (propVal instanceof Date && !isNaN(propVal.getTime()) && isNaN(e[prop])) {
+        employee[prop] = moment(propVal).format("YYYY-MM-DD");
+      } else {
+        employee[prop] = e[prop];
+      }
     }
     return employee;
   }

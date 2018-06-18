@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service';
 import { Accomodations } from '../../../models';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Dropdown } from 'primeng/primeng';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-accomodations',
@@ -81,7 +80,12 @@ export class AccomodationsComponent implements OnInit {
   cloneAccomodation(a: Accomodations): Accomodations {
     let accomodation = new Accomodations();
     for(let prop in a) {
-      accomodation[prop] = a[prop];
+      let propVal = new Date(a[prop]);
+      if (propVal instanceof Date && !isNaN(propVal.getTime()) && isNaN(a[prop])) {
+        accomodation[prop] = moment(propVal).format("YYYY-MM-DD");
+      } else {
+        accomodation[prop] = a[prop];
+      }
     }
     return accomodation;
   }

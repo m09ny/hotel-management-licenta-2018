@@ -101,6 +101,7 @@ export class ReservationsComponent implements OnInit {
             this.reservations.push({
               "roomId": ndx,
               "id": i,
+              "accomodationId": this.reservationsInfo[ndx][i].accomodationId,
               "title": this.reservationsInfo[ndx][i].clientName,
               "start": moment(this.reservationsInfo[ndx][i].startDate).format("YYYY-MM-DD"),
               "end": moment(this.reservationsInfo[ndx][i].endDate).format("YYYY-MM-DD")
@@ -128,12 +129,11 @@ export class ReservationsComponent implements OnInit {
   }
 
   deleteReservation(select: Reservations) {
-    this.apiService.delete('reservations/' + this.selectedReservation.id).subscribe(res => {
-      let index = this.findReservationIndex();
-      this.reservations = this.reservations.filter((val, i) => i !== index);
+   this.apiService.delete('accomodations/' + this.selectedReservation.accomodationId).subscribe(res => {
+      let ndx = this.reservations.findIndex((v) => v.accomodationId === this.selectedReservation.accomodationId);
+      this.reservations.splice(ndx, 1);
       this.selectedReservation = null;
       this.displayDialog = false;
-      console.log(res);
     });
   }
 

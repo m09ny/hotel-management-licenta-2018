@@ -42,7 +42,7 @@
           <label for="date">Date</label>
         </div>
         <div class="ui-grid-col-8">
-          <input pInputText id="date" [ngModel]="selectedBill.date | date:'yyyy-MM-dd'" (ngModelChange)="selectedBill.date=$event" />
+            <p-calendar inputId="date" name="date" [(ngModel)]="selectedBill.date" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
         </div>
       </div>
       <div class="ui-grid-row">

@@ -12,8 +12,8 @@
   <sui-sidebar class="inverted vertical" #sidebar>
     <a class="item" href="/home">Home</a>
     <a class="item" href="/rooms">Rooms</a>
-    <a class="item" href="/employees">Employees</a>  
-    <a class="item" href="/departments">Departments</a>
+    <a class="item" href="/employees" *ngIf="currentUser.userName === 'admin1' || currentUser.userName === 'admin2' ">Employees</a>  
+    <a class="item" href="/departments" *ngIf="currentUser.userName === 'admin1' || currentUser.userName === 'admin2'">Departments</a>
     <a class="item" href="/clients">Clients</a>
     <a class="item" href="/bills">Bills</a>
     <a class="item" href="/accomodations">Accomodations</a>
