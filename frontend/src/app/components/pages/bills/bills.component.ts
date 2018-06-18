@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import * as moment from 'moment';
+
 import { ApiService } from '../../../service/';
 import { Bills } from '../../../models/bills.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Dropdown } from 'primeng/primeng';
 
 @Component({
   selector: 'app-bills',
@@ -24,7 +29,6 @@ export class BillsComponent implements OnInit {
     this.apiService.get('bills/').subscribe(res => {
       this.bills = res;
     });
-  
   }
 
   viewBill(select: Bills) {
