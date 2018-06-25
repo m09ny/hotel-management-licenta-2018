@@ -118,11 +118,11 @@ export class ReservationsComponent implements OnInit {
     let reservation: Reservations = this.reservationsInfo[event.calEvent.roomId][event.calEvent.id]
     this.selectedReservation = Object.assign({}, reservation);
     this.selectedReservation = Object.assign(this.selectedReservation, 
-      ReservationsComponent.findIndexFromId(this.clients, reservation.clientId));
+      ReservationsComponent.findItemFromId(this.clients, reservation.clientId));
     this.selectedReservation = Object.assign(this.selectedReservation, 
-      ReservationsComponent.findIndexFromId(this.accomodations, reservation.accomodationId));
+      ReservationsComponent.findItemFromId(this.accomodations, reservation.accomodationId));
     this.selectedReservation = Object.assign(this.selectedReservation,
-      ReservationsComponent.findIndexFromId(this.bills, reservation.billId));
+      ReservationsComponent.findItemFromId(this.bills, reservation.billId));
 
     //console.log(reservation);
     //console.log(this.bills, this.selectedReservation);
@@ -137,37 +137,50 @@ export class ReservationsComponent implements OnInit {
     });
   }
 
+  saveReservation() {
+    let accomodationNdx:number = this.accomodations.findIndex((e) => e.id === this.selectedReservation.accomodationId),
+      clientNdx:number = this.clients.findIndex((e) => e.id === this.selectedReservation.clientId),
+      billNdx:number = this.bills.findIndex((e) => e.id === this.selectedReservation.billId),
+      reservationNdx:number = this.reservations.findIndex((e) => +e.roomId === +this.selectedReservation.id_room);
 
-  saveReservation(select: Reservations) {
+    console.log(this.reservations, this.selectedReservation, this.accomodations[accomodationNdx], this.bills[billNdx], this.clients[clientNdx]);
+    this.accomodations[accomodationNdx].nrAdults = this.selectedReservation.nrAdults;
+    this.accomodations[accomodationNdx].nrChildrens = this.selectedReservation.nrChildrens;
+    this.accomodations[accomodationNdx].nrChildrens = this.selectedReservation.nrChildrens;
+    this.accomodations[accomodationNdx].nrNights = this.selectedReservation.nrNights;
+    this.accomodations[accomodationNdx].id_room = this.selectedReservation.id_room;
+    this.accomodations[accomodationNdx].id_employee = this.selectedReservation.id_employee;
+
+    this.bills[billNdx].amout = this.selectedReservation.amout;
+    
+    let clientNames:string[] = this.selectedReservation.clientName.split(" ");
+    this.clients[clientNdx].firstName = clientNames[0];
+    this.clients[clientNdx].lastName = clientNames[1];
+
+    this.reservationsInfo[this.selectedReservation.id_room][reservationNdx].clientName = this.selectedReservation.clientName;
+    this.reservationsInfo[this.selectedReservation.id_room][reservationNdx].startDate = this.selectedReservation.startDate;
+    this.reservationsInfo[this.selectedReservation.id_room][reservationNdx].endDate = this.selectedReservation.endDate;
+
+    this.reservations[reservationNdx].title = this.selectedReservation.clientName;
+    this.reservations[reservationNdx].start = moment(this.selectedReservation.startDate).format("YYYY-MM-DD");
+    this.reservations[reservationNdx].end = moment(this.selectedReservation.endDate).format("YYYY-MM-DD");
+
+    let reservations = this.reservations.slice(0);
+    this.reservations = [];
+    setTimeout(() => { this.reservations = reservations.slice(0); }, 0);
+
     this.displayDialog = false;
-    this.apiService.put('reservations/' + this.selectedReservation.id, this.selectedReservation)
-      .subscribe(res => this.update(res));
-  }
-
-
-  update(res) {
-    let reservations = [...this.reservations];
-    console.log(reservations[this.findReservationIndex()]);
-    reservations[this.findReservationIndex()] = this.selectedReservation;
-    this.reservations = reservations; 
-
-    console.log(this.reservations);
     this.selectedReservation = null;
-    this.displayDialog = false;  
-   
   }
 
-  findReservationIndex(): number {
-    console.log(this.selectedReservation.id);
-    return this.reservations.findIndex((element) => element.id === this.selectedReservation.id);
-  }
-
-  calculateDepartureDate() {
+  private calculateDepartureDate() {
     let departureDate:Date = new Date(this.selectedReservation.startDate);
-    return departureDate.setDate(departureDate.getDate() + parseInt(this.selectedReservation.nrNights, 10));
+    departureDate.setDate(departureDate.getDate() + (parseInt(this.selectedReservation.nrNights, 10) || 0));
+    this.selectedReservation.endDate = departureDate;
+    return departureDate;
   }
 
-  private static findIndexFromId<T extends { id: number }>(arr:T[], id:number): T {
+  private static findItemFromId<T extends { id: number }>(arr:T[], id:number): T {
     let billIndex:number = arr.findIndex(v => v.id === id);
     return arr[billIndex];
   }
