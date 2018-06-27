@@ -143,10 +143,9 @@ export class ReservationsComponent implements OnInit {
       billNdx:number = this.bills.findIndex((e) => e.id === this.selectedReservation.billId),
       reservationNdx:number = this.reservations.findIndex((e) => +e.roomId === +this.selectedReservation.id_room);
 
-    console.log(this.reservations, this.selectedReservation, this.accomodations[accomodationNdx], this.bills[billNdx], this.clients[clientNdx]);
     this.accomodations[accomodationNdx].nrAdults = this.selectedReservation.nrAdults;
     this.accomodations[accomodationNdx].nrChildrens = this.selectedReservation.nrChildrens;
-    this.accomodations[accomodationNdx].nrChildrens = this.selectedReservation.nrChildrens;
+    this.accomodations[accomodationNdx].arrivelDate = this.selectedReservation.startDate;
     this.accomodations[accomodationNdx].nrNights = this.selectedReservation.nrNights;
     this.accomodations[accomodationNdx].id_room = this.selectedReservation.id_room;
     this.accomodations[accomodationNdx].id_employee = this.selectedReservation.id_employee;
@@ -169,8 +168,19 @@ export class ReservationsComponent implements OnInit {
     this.reservations = [];
     setTimeout(() => { this.reservations = reservations.slice(0); }, 0);
 
-    this.displayDialog = false;
-    this.selectedReservation = null;
+    type updateResponseType = { message: string };
+    Observable.forkJoin([
+      this.apiService.put("bills/" + this.bills[billNdx].id, this.bills[billNdx]),
+      this.apiService.put("accomodations/" + this.accomodations[accomodationNdx].id, this.accomodations[accomodationNdx]),
+      this.apiService.put("clients/" + this.clients[clientNdx].id, this.accomodations[clientNdx])
+    ])
+    .subscribe((v: [updateResponseType, updateResponseType, updateResponseType] ) => {
+      this.displayDialog = false;
+      this.selectedReservation = null;
+      setTimeout(() => alert(v[0].message + "\n" + v[1].message + "\n" + v[2].message), 0);
+    }, (error) => {
+      alert(JSON.stringify(error));
+    });  
   }
 
   private calculateDepartureDate() {
